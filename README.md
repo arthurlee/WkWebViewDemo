@@ -16,12 +16,12 @@ It demonstrates the basic usage of the new WKWebView. And also provides a simple
 
 Key points:
 ```objc
-	// js代码注入
-	NSString *injectJS = [self loadInjectJS];
-	WKUserScript *script = [[WKUserScript alloc] initWithSource:injectJS injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];
-	[config.userContentController addUserScript:script];
+// js代码注入
+NSString *injectJS = [self loadInjectJS];
+WKUserScript *script = [[WKUserScript alloc] initWithSource:injectJS injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];
+[config.userContentController addUserScript:script];
 	
-	// 交互对象设置
-	[config.userContentController addScriptMessageHandler:(id)self name:@"ibuick"];
+// 交互对象设置
+[config.userContentController addScriptMessageHandler:(id)self name:@"ibuick"];
 
 ```

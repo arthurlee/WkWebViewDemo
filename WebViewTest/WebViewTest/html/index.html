@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>WKWebView测试</title>
+	<style>
+		body {
+			margin: 0 auto;
+			overflow: hidden;
+			font-size: 1em;
+		}
+		
+		h1 {
+			font-size: 2em;
+		}
+		
+		button {
+			font-size: 2em;
+		}
+	</style>
+</head>
+<body>
+	<h1>获取属性</h1>
+	<button onclick="button_getUserID_click()">获得用户编号</button>
+	
+	<div id="user_id"></div>
+	<div id="device_no"></div>
+	
+	
+	<h1>方法</h1>
+	<button onclick="button_share_click()">分享</button>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script>
+		window.IBUserReady = function() {
+			$('#user_id').text(window.IBUser.getUserID());
+			$('#device_no').text(window.IBUser.getDeviceNo());
+		}
+				
+		function button_getUserID_click() {
+			var user_id = window.IBUser.getUserID();
+			alert(user_id);
+		}
+		
+		function onShareResult(code, message) {
+			alert('onShareResut: ' + message);
+		}
+		
+		function button_share_click() {
+			var params = {
+				title:		'欢迎',
+				content:	'具体内容',
+				url:		'http://ip:port/content.html',
+				callback:	'onShareResult',
+				thumbnail_image_url: 'http:/ip:port/1.jpg',
+				platforms: {
+					wechat_session:		"1",	// 微信好友
+					wechat_timeline:	"1",	// 朋友圈
+					sina_weibo:			"1",	// 新浪微博
+					renren:				"1",	// 人人网
+					qq:					"1",	// QQ好友
+					qq_zone:			"1"		// QQ空间
+				}
+			};
+				
+			var data = JSON.stringify(params);
+			alert(data);
+			window.IBUser.share(data);
+		}
+	</script>
+</body>
+</html>

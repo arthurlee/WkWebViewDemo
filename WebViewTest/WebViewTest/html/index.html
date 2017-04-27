@@ -22,6 +22,8 @@
 <body>
 	<h1>获取属性</h1>
 	<button onclick="button_getUserID_click()">获得用户编号</button>
+	<button onclick="button_getSessionId_click()">获得sessionId</button>
+	<button onclick="button_setSessionId_click()">设置sessionId</button>
 	
 	<div id="user_id"></div>
 	<div id="device_no"></div>
@@ -39,6 +41,18 @@
 		function button_getUserID_click() {
 			var user_id = window.IBUser.getUserID();
 			alert(user_id);
+		}
+		
+		function button_getSessionId_click() {
+			var session_id = window.IBUser.getSessionID();
+			alert(session_id);			
+		}
+		
+		function button_setSessionId_click() {
+			window.IBUser.setSessionId({
+				function_name: 'setSessionId',
+				sessionId: 'hello, ok'
+			});
 		}
 		
 		function onShareResult(code, message) {

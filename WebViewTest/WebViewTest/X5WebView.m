@@ -74,6 +74,17 @@
 	
 	NSLog(@"JS交互参数：%@", dic);
 	
+	// TODO: dispatcher
+	NSString *func_name = dic[@"function_name"];
+	if ([func_name isEqualToString:@"setSessionId"]) {
+		NSString *sessionId = dic[@"sessionId"];
+		NSString *updateStatement = [NSString stringWithFormat:@"window.IBUser.session_id = '%@';", sessionId];
+		NSLog(@"update statement = %@", updateStatement);
+		[self evaluateJavaScript:updateStatement completionHandler:^(id _Nullable object, NSError * _Nullable error) {
+			NSLog(@"complete, %@", object);
+		}];
+	}
+	
 	if (dic[@"callback"] != nil) {
 		NSString *cbStatement = [NSString stringWithFormat:@"%@('0', 'ok', 'Here is the data you want to return')", dic[@"callback"]];
 		NSLog(@"callback statement = %@", cbStatement);

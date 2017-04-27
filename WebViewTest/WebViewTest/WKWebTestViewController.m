@@ -24,7 +24,7 @@
 	_webView.backgroundColor = UIColor.blueColor;
 	_webView.UIDelegate = self;
 	
-	[_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.1.4:8080/index.html"]]];
+	[_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.1.85:8080/index.html"]]];
 	NSLog(@"%f, %f, %f, %f", _webView.frame.origin.x, _webView.frame.origin.y, _webView.frame.size.width, _webView.frame.size.width);
 }
 

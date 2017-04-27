@@ -33,14 +33,14 @@ window.IBUser.getPostMessage = function(name) {
 		if (typeof params === 'string') {
 			obj = JSON.parse(params);
 		}
-		obj.method = name;
+		obj.function_name = name;
 		
 		window.webkit.messageHandlers.ibuick.postMessage(obj);
 	};
 };
 
 // 方法别名
-var methods = ['share', 'praise'];
+var methods = ['share', 'praise', 'setSessionId'];
 methods.forEach(function(name) {
 	window.IBUser[name] = window.IBUser.getPostMessage(name);
 });
